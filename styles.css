@@ -1131,6 +1131,7 @@ tfoot td{
 }
 
 
+
 /*PHARMACY FINAL*/
 
 .pharmacy-form {
@@ -1149,58 +1150,468 @@ tfoot td{
     margin: 30px 20px; 
 }
 
-.pharmacy-form h2, .pharmacy-form h3 {
-    text-align: left;
-    color: #112954;
-    margin-bottom: 10px;
+
+/* PHARMACY Shopping CART CSS */
+
+.shop-item {
+    margin: 30px;
 }
 
-.pharmacy-form form {
+.shop-item-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.shop-item-image {
+    height: 250px;
+}
+
+.shop-item-details {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    padding: 5px;
 }
 
-.pharmacy-form label {
-    font-size: 16px;
+.shop-item-price {
+    flex-grow: 1;
     color: #333;
 }
 
-.pharmacy-form input, .pharmacy-form select, .pharmacy-form textarea {
-    padding: 10px;
+.shop-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.cart-header {
+    font-weight: bold;
+    font-size: 1.25em;
+    color: #333;
+}
+
+.cart-column {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-right: 1.5em;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.cart-row {
+    display: flex;
+}
+
+.cart-item {
+    width: 45%;
+}
+
+.cart-price {
+    width: 20%;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.cart-quantity {
+    width: 35%;
+}
+
+.cart-item-title {
+    color: #333;
+    margin-left: .5em;
+    font-size: 1.2em;
+}
+
+.cart-item-image {
+    width: 75px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.btn-danger {
+    color: white;
+    background-color: #EB5757;
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+}
+
+.btn-danger:hover {
+    background-color: #CC4C4C;
+}
+
+.cart-quantity-input {
+    height: 34px;
+    width: 50px;
     border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
+    border: 1px solid #56CCF2;
+    background-color: #eee;
+    color: #333;
+    padding: 0;
+    text-align: center;
+    font-size: 1.2em;
+    margin-right: 25px;
 }
 
-.pharmacy-form textarea {
-    resize: vertical;
+.cart-row:last-child {
+    border-bottom: 1px solid black;
 }
 
-.form-buttons {
+.cart-row:last-child .cart-column {
+    border: none;
+}
+
+.cart-total {
+    text-align: end;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.cart-total-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: black;
+    margin-right: 20px;
+}
+
+.cart-total-price {
+    color: #333;
+    font-size: 1.1em;
+}
+
+/* Mobile Support MEdia queries*/
+@media (max-width: 600px) {
+    .shop-items {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-row {
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+
+    .cart-item, .cart-price, .cart-quantity {
+        width: 100%; 
+        margin-bottom: 15px; 
+    }
+
+    .cart-item-title {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+
+    .cart-total {
+        text-align: left;
+        margin: 20px 0;
+    }
+    
+    .cart-total-title {
+        font-size: 1.3em; 
+    }
+
+    .cart-total-price {
+        font-size: 1em; 
+    }
+}
+
+@media (max-width: 480px) {
+    .shop-item {
+        margin: 20px 0;
+    }
+
+    .shop-item-title {
+        font-size: 1.2em; 
+    }
+
+    .btn-danger, .btn-primary, #clear-cart, #save-favorites, #load-favorites {
+        font-size: 0.9em; 
+        padding: 8px 10px; 
+    }
+
+    .cart-quantity-input {
+        width: 40px; 
+        font-size: 1em; 
+    }
+
+    .btn-primary.btn-purchase {
+        font-size: 1em; 
+        padding: 8px 12px; 
+    }
+
+    .cart-buttons {
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 5px;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Cart Buttons CSS */
+
+/* Cart Remove buttons */
+.btn {
+    text-align: center;
+    vertical-align: middle;
+    padding: .67em .67em;
+    cursor: pointer;
+}
+
+.btn-header {
+    margin: .5em 15% 2em 15%;
+    color: white;
+    border: 2px solid #2D9CDB;
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 0;
+    font-size: 1.5em;
+    font-weight: lighter;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.btn-header:hover {
+    background-color: rgba(255, 255, 255, .3);
+}
+
+.btn-play {
+    display: block;
+    margin: 0 auto;
+    color: #2D9CDB;
+    font-size: 4em;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    text-align: center;
+}
+
+.btn-primary {
+    color: white;
+    background-color: #56CCF2;
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #2D9CDB;
+}
+
+/* BUY NOW button */
+.btn-primary.btn-purchase {
+    display: inline-block; 
+    margin: 0; 
+    font-size: 1.2em;
+    padding: 10px 15px;
+}
+
+.btn-primary.btn-purchase:hover {
+    background-color: #2D9CDB;
+    box-shadow: 0px 6px 10px rgba(45, 156, 219, 0.2);
+}
+
+/* Clear Cart button */
+#clear-cart {
+    display: inline-block;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #EB5757;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: .3em;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+#clear-cart:hover {
+    background-color: #b84545;
+    box-shadow: 0px 6px 10px rgba(224, 168, 0, 0.2);
+}
+
+/* Save Favorites button */
+#save-favorites {
+    display: inline-block;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #17A2B8;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: .3em;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+#save-favorites:hover {
+    background-color: #117A8B;
+    box-shadow: 0px 6px 10px rgba(17, 122, 139, 0.2);
+}
+
+/* Load Favorites button */
+#load-favorites {
+    display: inline-block;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #6C757D;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: .3em;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+#load-favorites:hover {
+    background-color: #5A6268;
+    box-shadow: 0px 6px 10px rgba(90, 98, 104, 0.2);
+}
+
+/* Wrapper for all buttons */
+.cart-buttons {
+    display: flex; 
+    justify-content: flex-start; 
+    gap: 10px; 
+    margin: 20px 10px; 
+}
+
+
+/* Checkout HTML Styles*/
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-row {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-.submit-btn, .reset-btn {
+.cart-column {
+    display: inline-block;
+}
+
+.cart-item-title {
+    font-weight: bold;
+}
+
+.cart-price,
+.cart-quantity {
+    margin-left: 10px;
+    font-size: medium;
+}
+
+.cart-total {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.btn-purchase {
     padding: 10px 20px;
-    font-size: 16px;
-    background-color: #112954;
+    background-color: #2D9CDB;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
-.reset-btn {
-    background-color: #ff00009a;
+.btn-purchase:hover {
+    background-color: #004073
 }
 
-.submit-btn:hover {
-    background-color: #0a1d3e;
+.btn-cart {
+    padding: 10px 20px;
+    background-color: #2D9CDB;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1.2em;
 }
 
-.reset-btn:hover {
-    background-color: #999;
+.btn-cart:hover {
+    background-color: #004073
+}
+
+/* Form styles */
+form {
+    margin-top: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+textarea {
+    resize: none;
+}
+
+/* Payment Method form */
+#payment-method {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    appearance: none; /* Hide default browser arrow */
+}
+
+#payment-method:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+#payment-method option {
+    font-size: 14px;
+    padding: 5px;
 }
